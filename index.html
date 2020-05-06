@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Alétheia  </title>
+    <link id="entry-file" rel="import" href="/entry.html">
+</head>
+<body>
+    <h1>Alétheia Enciclopedia</h1>
+<!--<a href="/entry.html" target="_blank">acá vamos</a>-->    
+<script>
+var getImport = document.querySelector('#entry-file');
+
+var getContent = getImport.import.querySelector('.bm-color-blue');
+
+document.body.appendChild(document.importNode(getContent, true));
+
+</script>
+</body>
+
+</html>
