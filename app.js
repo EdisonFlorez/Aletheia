@@ -10,9 +10,12 @@ function putValues(){
         let palabra = arrayelement[i].querySelector(".bm-text").innerText
         
         arraywords[i] = palabra;
+        let llave = "llave"+ i;
+        localStorage.setItem(llave, palabra)
     }
 }
 putValues();
+
 
 
 console.log(arraywords);
