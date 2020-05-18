@@ -4,19 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Alétheia  </title>
-    <link id="entry-file" rel="import" href="/entry.html">
+    
 </head>
 <body>
     <h1>Alétheia Enciclopedia</h1>
-<!--<a href="/entry.html" target="_blank">acá vamos</a>-->    
-<script>
-var getImport = document.querySelector('#entry-file');
 
-var getContent = getImport.import.querySelector('.bm-color-blue');
+<table>
+    <tr id="fila1" >
+        <td>Palabra</td>
+        <td>Significado</td>
 
-document.body.appendChild(document.importNode(getContent, true));
+    </tr>
+    <tr id="fila2">
+    
+    </tr>
+</table>
 
-</script>
+
+<form name="formulario" method="POST" action="upload.php"
+      enctype="multipart/form-data">  <!-- ¡No olvides el enctype! -->
+  <!-- Campo de selección de archivo -->
+  <input  type="file" name="adjunto" accept=".pdf,.jpg,.png" multiple>
+  <input  type="submit" value="subir documento">
+</form>
+    <script>
+        
+        const nombreFilas = new Array();
+        var valores = new Array();
+
+
+        for(let i=0; i<localStorage.length; i++){
+            let llave = "llave"+ i;
+            
+
+            valores[i]= localStorage.getItem(llave);
+        
+            
+            //texto.textContent = localStorage.getItem("llave1");
+        }
+        
+        //document.querySelector('#fila2').appendChild(texto);
+        console.log(valores);
+
+        
+        //la función crea tanto las filas como las primeras columnas 
+        function crearElementos(){
+
+            for(let i=0; i<valores.length; i++){
+                nombreFilas[i] = "fila"+(2+i);
+                var filas = document.createElement('tr');
+                filas.id = nombreFilas[i];
+                document.querySelector('tbody').appendChild(filas);
+                
+                var columnaPrincipal = document.createElement('td');
+                columnaPrincipal.className = "columna1";
+                columnaPrincipal.textContent  = valores[i];
+                document.querySelector('#'+nombreFilas[i]).appendChild(columnaPrincipal);
+                
+
+            }
+        }
+        crearElementos();
+        console.log(nombreFilas)
+    </script>
+
+<!--
+        
+ <canvas id="picker" width="300" height="300" style="border: 2px solid #000000;"></canvas>
+    <script>
+        var canvasPicker = document.getElementById("picker");
+        var ctx = canvasPicker.getContext("2d");
+
+        // Create gradient
+        var grd = ctx.createLinearGradient(0,0,100,200)
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);
+
+    </script>
+    -->
+   
+
 </body>
 
 </html>
