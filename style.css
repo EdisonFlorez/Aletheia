@@ -1,0 +1,15 @@
+h1{
+    font-family: 'Cinzel', serif;
+    
+}
+#header-row{
+    background-color: rgba(245, 97, 97, 0.87);
+    height: 30px;
+    font-family: 'DM Mono', monospace;
+    text-align: center;
+}
+table{
+    width: 500px;
+    font-family: 'Slabo 27px', serif;
+}
+

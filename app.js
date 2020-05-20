@@ -1,20 +1,20 @@
-let elemento;
+let element;
 /*elemento = document.querySelector(".bm-color-blue").querySelector(".bm-text").childNodes[1].innerText
 */
-elemento = document.querySelectorAll(".bm-color-blue")
+element = document.querySelectorAll(".bm-color-blue")
 
-var arrayelement = Array.from(elemento);
+var arrayelement = Array.from(element);
 var arraywords = new Array();
 function putValues(){
     for(let i=0;i<arrayelement.length;i++){
-        let palabra = arrayelement[i].querySelector(".bm-text").innerText
+        let unknow_word = arrayelement[i].querySelector(".bm-text").innerText
         
-        arraywords[i] = palabra;
-        let llave = "llave"+ i;
-        localStorage.setItem(llave, palabra)
+        arraywords[i] = unknow_word;
+        let storageKeys = "keys"+ i;
+        localStorage.setItem(storageKeys, unknow_word);
     }
 }
-putValues();
+putValues(); 
 
 
 

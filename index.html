@@ -3,69 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=DM+Mono:ital,wght@1,300&family=Slabo+27px&display=swap" rel="stylesheet">
     <title> Alétheia  </title>
     
 </head>
 <body>
     <h1>Alétheia Enciclopedia</h1>
 
-<table>
-    <tr id="fila1" >
-        <td>Palabra</td>
-        <td>Significado</td>
+<table border="2">
+    <tr id="header-row" >
+        <td>Desconocido</td>
+        <td>Aletheia</td>
 
     </tr>
-    <tr id="fila2">
     
-    </tr>
 </table>
+    <!--Debería crear una función que compare si hay palabras repetidas y que elimine cualquiera de las dos entradas en caso de que sea correcto-->
 
-
-<form name="formulario" method="POST" action="upload.php"
+<form action="upload.php" method="POST"
       enctype="multipart/form-data">  <!-- ¡No olvides el enctype! -->
   <!-- Campo de selección de archivo -->
-  <input  type="file" name="adjunto" accept=".pdf,.jpg,.png" multiple>
-  <input  type="submit" value="subir documento">
+  <input  type="file" name="name">
+  <input  type="submit" value="Subir documento">
 </form>
     <script>
         
-        const nombreFilas = new Array();
-        var valores = new Array();
+        const rowNames = new Array();
+        var valuesWords = new Array();
 
+        //hacemos un arreglo llamado valores con los archivos del local storage
+       
 
         for(let i=0; i<localStorage.length; i++){
-            let llave = "llave"+ i;
-            
-
-            valores[i]= localStorage.getItem(llave);
-        
-            
-            //texto.textContent = localStorage.getItem("llave1");
+            let storageKeys = "keys"+ i;
+            valuesWords[i]= localStorage.getItem(storageKeys);
         }
-        
-        //document.querySelector('#fila2').appendChild(texto);
-        console.log(valores);
 
-        
         //la función crea tanto las filas como las primeras columnas 
-        function crearElementos(){
+        function createDomElements(){
 
-            for(let i=0; i<valores.length; i++){
-                nombreFilas[i] = "fila"+(2+i);
-                var filas = document.createElement('tr');
-                filas.id = nombreFilas[i];
-                document.querySelector('tbody').appendChild(filas);
+            for(let i=0; i<valuesWords.length; i++){
+                rowNames[i] = "row"+(1+i);
+                var principalTableRows = document.createElement('tr');
+                principalTableRows.id = rowNames[i];
+                document.querySelector('tbody').appendChild(principalTableRows);
                 
-                var columnaPrincipal = document.createElement('td');
-                columnaPrincipal.className = "columna1";
-                columnaPrincipal.textContent  = valores[i];
-                document.querySelector('#'+nombreFilas[i]).appendChild(columnaPrincipal);
-                
-
+                var principalColumn = document.createElement('td');
+                principalColumn.className = "column1";
+                principalColumn.style.textTransform = "capitalize";
+                //en esta parte creamos el contenido de las filas con los valores
+                principalColumn.textContent  = valuesWords[i]; 
+                document.querySelector('#'+rowNames[i]).appendChild(principalColumn);
             }
         }
-        crearElementos();
-        console.log(nombreFilas)
+        createDomElements();
+        
+        console.log(rowNames)
+
+
     </script>
 
 <!--
