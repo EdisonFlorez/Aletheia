@@ -1,4 +1,4 @@
 <?PHP
-echo $S_FILES["file"]["name"];
+echo $_FILES["file"]["name"];
 
 ?>
