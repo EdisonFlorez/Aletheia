@@ -15,16 +15,11 @@ if (!$conectar) {
 
 
 //pedir Información
-$pedirInfo = "SELECT (InfoDesconocida) from Enciclopedia";
+$pedirInfo = "SELECT DISTINCT InfoDesconocida from Enciclopedia";
 $resultado = mysqli_query($conectar, $pedirInfo)
 		or die ("Insert Error");
 
 
-while ($row = mysqli_fetch_array($resultado)) {
-  echo $row[0]."</br>";
-
-};
+?>
 
 
-
- ?>
