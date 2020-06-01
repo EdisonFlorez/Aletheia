@@ -17,17 +17,23 @@ $infoDesconocida = array('');
 $seleccionEtiqueta = $documento->getElementsByTagName('div');
 //creamos el iterador para guardar las palabras en un arreglo
 $i=0;
-$insertar = "";
+
 foreach ($seleccionEtiqueta as $div) {
     if($div->getAttribute('class')==$clase){
-      $palabraDesconocida = $div->getElementsByTagName('p')->item(1)->textContent;
-      $infoDesconocida[$i] = $palabraDesconocida;
-      $insertar = "INSERT INTO Enciclopedia(InfoDesconocida) VALUES ('$palabraDesconocida')";
-      $query  = mysqli_query($conectar,$insertar);
-      echo $palabraDesconocida. "<br/>";
-
+      $infoDesconocida[$i] = $div->getElementsByTagName('p')->item(1)->textContent;
+      
     $i++;
     }
 }
+
+$arregloMejorado = array_unique($infoDesconocida);
+for($i=0; $i<count($arregloMejorado); $i++){
+  $palabraDesconocida = $arregloMejorado[$i];
+  $insertar = "INSERT INTO Enciclopedia(InfoDesconocida) VALUES ('$palabraDesconocida')";
+  $query  = mysqli_query($conectar,$insertar);
+  echo $palabraDesconocida. "<br/>";
+
+}
+ 
 
 ?>
