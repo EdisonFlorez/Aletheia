@@ -15,7 +15,7 @@ if (!$conectar) {
 
 
 //pedir Información
-$pedirInfo = "SELECT (InfoDesconocida) from Enciclopedia";
+$pedirInfo = "SELECT DISTINCT InfoDesconocida) from Enciclopedia";
 $resultado = mysqli_query($conectar, $pedirInfo)
 		or die ("Insert Error");
 
